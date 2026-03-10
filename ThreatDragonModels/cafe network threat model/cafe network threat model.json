@@ -261,8 +261,8 @@
                   "status": "Open",
                   "severity": "Low",
                   "type": "Tampering",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "ARP Tampering atau ARP Poisoning adalah serangan di mana penyerang memanipulasi tabel ARP dalam jaringan dengan mengirimkan informasi ARP palsu. Akibatnya, lalu lintas data yang seharusnya menuju ke perangkat tertentu dapat dialihkan ke perangkat milik penyerang. Dalam jaringan cafe, serangan ini dapat digunakan untuk melakukan penyadapan data atau serangan man-in-the-middle.",
+                  "mitigation": "Untuk mengurangi risiko ARP Tampering, administrator jaringan dapat mengaktifkan fitur Dynamic ARP Inspection (DAI) pada perangkat jaringan. Selain itu, penggunaan static ARP entry untuk perangkat penting serta pemisahan jaringan menggunakan VLAN juga dapat membantu meningkatkan keamanan jaringan.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -271,7 +271,7 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
@@ -403,8 +403,8 @@
                   "status": "Open",
                   "severity": "High",
                   "type": "Spoofing",
-                  "description": "MAC spoofing is an attack where an attacker changes their device MAC address to impersonate another device on the network. In a cafe network environment, an attacker can bypass access control and gain unauthorized network access by pretending to be a legitimate device connected to the switch.",
-                  "mitigation": "Implement port security on the switch to limit the number of allowed MAC addresses per port. Enable MAC address filtering and monitoring to detect unusual MAC address changes. Network administrators can also implement VLAN segmentation and authentication mechanisms such as 802.1X to prevent unauthorized access.",
+                  "description": "MAC Spoofing adalah serangan di mana penyerang mengubah alamat MAC perangkatnya agar menyerupai perangkat lain yang sah di dalam jaringan. Pada jaringan cafe, attacker dapat menyamar sebagai perangkat yang sudah terdaftar pada switch untuk mendapatkan akses ke jaringan internal. Hal ini dapat menyebabkan akses tidak sah dan memungkinkan penyerang melakukan serangan lanjutan seperti pencurian data atau penyadapan lalu lintas jaringan.",
+                  "mitigation": "Untuk mencegah serangan MAC Spoofing, administrator jaringan dapat mengaktifkan fitur Port Security pada switch untuk membatasi jumlah alamat MAC yang diperbolehkan pada setiap port. Selain itu, dapat dilakukan MAC address filtering serta pemantauan aktivitas jaringan secara berkala untuk mendeteksi perubahan alamat MAC yang mencurigakan.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -412,13 +412,20 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 2,
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -1023,8 +1030,8 @@
                   "status": "Open",
                   "severity": "Low",
                   "type": "Elevation of privilege",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "ProvidUnauthorized Admin Access merupakan kondisi di mana pengguna yang tidak memiliki hak akses berhasil memperoleh akses sebagai administrator pada sistem atau perangkat jaringan. Dalam jaringan WiFi cafe, penyerang dapat mencoba menebak atau mencuri kredensial admin untuk mengakses pengaturan router atau access point. Jika berhasil, penyerang dapat mengubah konfigurasi jaringan, memutus koneksi pengguna lain, atau mencuri informasi sensitif.",
+                  "mitigation": "Untuk mencegah akses admin yang tidak sah, administrator jaringan harus menggunakan password yang kuat dan unik untuk akun administrator. Selain itu, disarankan untuk mengaktifkan two-factor authentication (2FA) jika tersedia, membatasi akses admin hanya dari perangkat tertentu, serta secara rutin memperbarui firmware perangkat jaringan.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
@@ -1036,8 +1043,8 @@
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "WiFi Denial of Service adalah serangan yang bertujuan untuk membuat jaringan WiFi tidak dapat digunakan oleh pengguna yang sah. Serangan ini biasanya dilakukan dengan membanjiri jaringan dengan lalu lintas data atau permintaan koneksi yang sangat banyak sehingga perangkat jaringan tidak mampu menangani beban tersebut. Dalam lingkungan cafe, serangan ini dapat menyebabkan pelanggan tidak dapat terhubung ke internet dan mengganggu operasional bisnis.",
+                  "mitigation": "Untuk mengurangi dampak serangan DoS pada jaringan WiFi, administrator dapat menerapkan rate limiting untuk membatasi jumlah permintaan koneksi dari satu perangkat. Selain itu, penggunaan firewall jaringan, sistem intrusion detection system (IDS), serta pemantauan lalu lintas jaringan secara real-time dapat membantu mendeteksi dan menangani serangan lebih cepat.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 5,
@@ -1049,8 +1056,8 @@
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 1
+                "denialOfService": 2,
+                "elevationOfPrivilege": 2
               }
             }
           },
